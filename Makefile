@@ -1,4 +1,10 @@
+
 all: OpenMP-QS OpenMP-PSRS OpenMPI-QS OpenMPI-PSRS Vanilla-QS
+
+OpenMP: OpenMP-QS OpenMP-PSRS Vanilla-QS
+
+OpenMPI: OpenMPI-QS OpenMPI-PSRS Vanilla-QS
+
 # OpenMP-QS OpenMP-PSRS 
 OpenMP-QS:
 	@cd OpenMP/QS && make Sim
