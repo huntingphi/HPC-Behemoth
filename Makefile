@@ -1,13 +1,13 @@
 all: OpenMP-QS OpenMP-PSRS OpenMPI-QS OpenMPI-PSRS Vanilla-QS
 # OpenMP-QS OpenMP-PSRS 
 OpenMP-QS:
-	@cd OpenMP/QS && make Sim >> Sim-OpenMP-QS.csv
+	@cd OpenMP/QS && make Sim
 OpenMP-PSRS:
-	@cd OpenMP/PSRS && make Sim >> Sim-OpenMP-PSRS.csv
+	@cd OpenMP/PSRS && make Sim
 OpenMPI-QS:
-	@cd OpenMPI/QS && make Sim >> Sim-OpenMPI-QS.csv
+	@cd OpenMPI/QS && make Sim
 OpenMPI-PSRS:
-	@cd OpenMPI/PSRS && make Sim >> Sim-OpenMPI-PSRS.csv
+	@cd OpenMPI/PSRS && make Sim
 Vanilla-QS:
-	@cd Vanilla/QS && make Sim >> Sim-Vanilla-QS.csv
+	@cd Vanilla/QS && make Sim
 
