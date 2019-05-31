@@ -1,5 +1,5 @@
 CXX = gcc # This is the main compiler
-CXXFLAGS = -lm -ldl -fopenmp
+CXXFLAGS = -fopenmp
 VPATH = test src include bin build
 
 
