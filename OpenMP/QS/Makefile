@@ -17,3 +17,15 @@ build: Quicksort.cpp
 Quicksort.cpp:
 	@$(CXX) $(CXXFLAGS) -I ./include -c src/Quicksort.c -o build/Quicksort.o
 
+
+Sim: build
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)
+	@bin/Quicksort $(ARGS)

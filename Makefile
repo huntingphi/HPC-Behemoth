@@ -7,7 +7,8 @@ OpenMPI: OpenMPI-QS OpenMPI-PSRS Vanilla-QS
 
 # OpenMP-QS OpenMP-PSRS 
 OpenMP-QS:
-	@cd OpenMP/QS && make Sim
+	# @cd OpenMP/QS && make Sim
+	make Sim -C OpenMP/QS 
 OpenMP-PSRS:
 	@cd OpenMP/PSRS && make Sim
 OpenMPI-QS:
