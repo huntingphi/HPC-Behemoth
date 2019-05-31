@@ -1,5 +1,5 @@
 CXX = mpicc # This is the main compiler
-CXXFLAGS = -fopenmp
+CXXFLAGS = -fopenmp -lm -ldl
 VPATH = src bin build
 
 .PHONY: build run PSRS.c
