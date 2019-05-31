@@ -17,11 +17,11 @@ void calc_partition_borders(int array[],
                int pivots[],
                int first_p,
                int last_p);
-void psrs_sort(int *a, int n);
+void psrs_sort(int *a, int n, int np);
 void sortll(int *a, int len);
 
 /* sort an array in non-descending order */
-void psrs_sort(int *a, int n) {
+void psrs_sort(int *a, int n, int np) {
   if(n > 1){
   if(n <= 55){
 	// Testing shows that sequential insertion sort is quickest when n <= 55 (approx.)
@@ -38,13 +38,13 @@ void psrs_sort(int *a, int n) {
 
   // Determine the appropriate number of threads to use
   // p^3 <= n - We need this to hold true
-  p = omp_get_max_threads();
+  p = np;
   p = p*p*p;
   if(p > n){
 	p = floor(pow(n,0.33));
 	p-=p%2;
   }else{
-   p = omp_get_max_threads();
+   p = np;
    p-=p%2;
   }
   omp_set_num_threads(p);
@@ -346,23 +346,27 @@ void initialize(int *v, int seed, int nelements) {
         // printf("a test\n");
 
         // }
-        int nelements = 1000000;
-        int seed = 1;
-        if (argc == 2) {
-            nelements = atoi(argv[1]);
-            seed = 1;
-        } else if (argc == 3) {
-            nelements = atoi(argv[1]);
-            seed = atoi(argv[2]);
-        }
+        int nelements= 1000000;
+    int seed=1;
+	int np = 1;
+    if (argc==2){
+        nelements = atoi(argv[1]);
+    }else if (argc==3){
+        nelements = atoi(argv[1]);
+        seed = atoi(argv[2]);
+    }else if (argc ==4){
+		nelements = atoi(argv[1]);
+        seed = atoi(argv[2]);
+		np = atoi(argv[3]);
+	}
         int *a = (int *) malloc(sizeof(int) * nelements);
         initialize(a, seed, nelements);
         double start_time = omp_get_wtime();
-        psrs_sort(a,nelements);
+        psrs_sort(a,nelements,np);
         testit(a,&nelements);
         double end_time= omp_get_wtime();
         double duration = end_time-start_time;
-        printf("OpenMP-PSRS,%d,%d,%f\n",omp_get_max_threads(),nelements,duration);
+        printf("OpenMP-PSRS,%d,%d,%f\n",np,nelements,duration);
         
         // printf("Time taken: %f\n",duration);
 

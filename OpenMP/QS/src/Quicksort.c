@@ -88,13 +88,17 @@ int main(int argc, char **argv){
 
 	int nelements= 1000000;
     int seed=1;
+	int np = 1;
     if (argc==2){
         nelements = atoi(argv[1]);
-        seed = 1;
     }else if (argc==3){
         nelements = atoi(argv[1]);
         seed = atoi(argv[2]);
-    }
+    }else if (argc ==4){
+		nelements = atoi(argv[1]);
+        seed = atoi(argv[2]);
+		np = atoi(argv[3]);
+	}
 	int minMum = 1;
 	int maxNum = nelements;
 	int maxNumbersDisplayed = 30;
@@ -190,7 +194,7 @@ int main(int argc, char **argv){
 
 
 //	printf("\nSorting with custom PARALLEL QuickSort... "); fflush(stdout);
-    int nThreads = omp_get_max_threads();
+    int nThreads = np;
 	startTime = omp_get_wtime();
 	quickSort_parallel(arr3, nelements, nThreads);
 	stopTime = omp_get_wtime();
