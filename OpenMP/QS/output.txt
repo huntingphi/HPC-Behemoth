@@ -1,0 +1,3 @@
+gcc  -fopenmp -I ./include -c src/Quicksort.c -o build/Quicksort.o
+gcc  -fopenmp build/Quicksort.o -o bin/Quicksort
+./bin/Quicksort 1045752 3

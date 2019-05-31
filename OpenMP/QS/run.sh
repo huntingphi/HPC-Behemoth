@@ -1,0 +1,1 @@
+make log ARGS="1000000 1"
